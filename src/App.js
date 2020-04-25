@@ -6,6 +6,8 @@ import thunk from 'redux-thunk';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Libraries from "./components/Libraries";
+import Students from './components/Students';
+
 import Navbar from "./components/Navbar";
 
 import reducers from "./reducers";
@@ -27,7 +29,9 @@ function App() {
               <Route path="/libraries">
                 <Libraries />
               </Route>
-              <Route path="/students">Students</Route>
+              <Route path="/students">
+                <Students />
+              </Route>
             </Switch>
           </div>
         </div>

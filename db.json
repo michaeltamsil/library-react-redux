@@ -29,5 +29,12 @@
       "id": 9
     }
   ],
-  "students": []
+  "students": [
+    {
+      "age": "18",
+      "kelas": "99",
+      "name": "Michael Tamsil",
+      "id": 1
+    }
+  ]
 }
