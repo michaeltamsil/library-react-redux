@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Button, Modal } from "react-bootstrap";
 
-import { add, hideAdd } from "./../../actioncreators/libraries";
+import { edit, hideEdit } from "./../../actioncreators/libraries";
 
-const Add = (props) => {
+const Edit = (props) => {
   const [data, setData] = useState({
-    number: 0,
-    status: false,
-    title: "",
-    year: 1990,
+    number: props.data.number,
+    status: props.data.status,
+    title: props.data.title,
+    year: props.data.year,
   });
 
-  const handleAdd = () => {
-    props.add(data);
+  const handleEdit = () => {
+    props.edit(data);
   };
 
   const handleClose = () => {
-    props.hideAdd();
+    props.hideEdit();
   };
 
   const handleChange = (event) => {
@@ -36,56 +36,61 @@ const Add = (props) => {
     }
   };
 
+  useEffect(() => {
+    setData(props.data)
+    console.log(props.data)
+  }, [props.data])
+
   return (
-    <Modal show={props.isShowAdd} onHide={handleClose}>
-      <Modal.Header closeButton className="bg-primary text-white">
-        <Modal.Title>Add Library</Modal.Title>
+    <Modal show={props.isShowEdit} onHide={handleClose}>
+      <Modal.Header closeButton className="bg-warning text-white">
+        <Modal.Title>Edit Library</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div class="form-group">
-          <label for="title">Title</label>
+        <div className="form-group">
+          <label htmlFor="title">Title</label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="title"
             name="title"
             value={data.title}
             onChange={handleChange}
           />
         </div>
-        <div class="form-group">
-          <label for="year">Year</label>
+        <div className="form-group">
+          <label htmlFor="year">Year</label>
           <input
             type="number"
-            class="form-control"
+            className="form-control"
             id="year"
             name="year"
             value={data.year}
             onChange={handleChange}
           />
         </div>
-        <div class="form-group">
-          <label for="number">Number</label>
+        <div className="form-group">
+          <label htmlFor="number">Number</label>
           <input
             type="number"
-            class="form-control"
+            className="form-control"
             id="number"
             name="number"
             value={data.number}
             onChange={handleChange}
           />
         </div>
-        <div class="form-group">
-          <div class="form-check">
+        <div className="form-group">
+          <div className="form-check">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               id="status"
               name="status"
               checked={data.status}
               onChange={handleChange}
             />
-            <label class="form-check-label" htmlFor="status">
+            <label className="form-check-label" htmlFor="status">
               di pinjam
             </label>
           </div>
@@ -95,7 +100,7 @@ const Add = (props) => {
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={handleAdd}>
+        <Button variant="warning" onClick={handleEdit}>
           Save
         </Button>
       </Modal.Footer>
@@ -105,13 +110,14 @@ const Add = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isShowAdd: state.libraries.isShowAdd,
+    data: state.libraries.dataEdit,
+    isShowEdit: state.libraries.isShowEdit,
   };
 };
 
 const mapDispatchToProps = {
-  add,
-  hideAdd,
+  edit,
+  hideEdit,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Add);
+export default connect(mapStateToProps, mapDispatchToProps)(Edit);

@@ -4,13 +4,16 @@ import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
 
 import { getData } from './../../actioncreators/libraries'
+
 import Add from './Add';
+import Delete from './Delete';
+import Edit from './Edit';
 import Item from './Item';
 
 const Main = (props) => {
 
     useEffect(() => {
-        if (!props.data.length)
+       if (!props.data.length)
             props.getData()
     }, [])
 
@@ -30,6 +33,8 @@ const Main = (props) => {
             }</tbody>
             </Table>
             <Add/>
+            <Delete/>
+            <Edit/>
         </div>
     )
 }

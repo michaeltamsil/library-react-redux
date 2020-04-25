@@ -33,6 +33,24 @@ export const deleteData = (id) => {
         dispatch({ 
             type: 'LIBRARIES_DELETE_DATA',
             payload: id
+        });
+
+        dispatch({ 
+            type: 'LIBRARIES_HIDE_DELETE'
+        });
+    }
+}
+
+export const edit = (data) => {
+    return async(dispatch) => {
+        const response = await axios.put(`${url}/${data.id}`, data);
+        dispatch({ 
+            type: 'LIBRARIES_EDIT_DATA',
+            payload: response.data
+        })
+
+        dispatch({ 
+            type: 'LIBRARIES_HIDE_EDIT'
         })
     }
 }
@@ -53,8 +71,34 @@ export const hideAdd = () => {
     }
 }
 
+export const hideDelete = () => {
+    return {
+        type: 'LIBRARIES_HIDE_DELETE'
+    }
+}
+
+export const hideEdit = () => {
+    return {
+        type: 'LIBRARIES_HIDE_EDIT'
+    }
+}
+
 export const showAdd = () => {
     return {
         type: 'LIBRARIES_SHOW_ADD'
+    }
+}
+
+export const showDelete = (data) => {
+    return {
+        type: 'LIBRARIES_SHOW_DELETE',
+        payload: data
+    }
+}
+
+export const showEdit = (data) => {
+    return {
+        type: 'LIBRARIES_SHOW_EDIT',
+        payload: data
     }
 }

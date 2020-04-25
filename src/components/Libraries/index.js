@@ -14,7 +14,7 @@ const Index = (props) => {
     return (
         <div>
             <h2>Libraries</h2>
-            <button onClick={showAdd}>Tambah</button>
+            <button className="btn btn-primary" onClick={showAdd}>Tambah</button>
             <Main/>
         </div>
     )
