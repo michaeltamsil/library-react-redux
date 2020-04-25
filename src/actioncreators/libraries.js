@@ -55,9 +55,13 @@ export const edit = (data) => {
     }
 }
 
-export const getData = () => {
+export const getData = (query) => {
+    let pertanyaan;
+    if (query){
+        pertanyaan = {params: {title: query }}
+    }
     return async(dispatch) => {
-        const response = await axios.get(url);
+        const response = await axios.get(url, pertanyaan);
         dispatch({ 
             type: 'LIBRARIES_GET_DATA',
             payload: response.data
@@ -82,6 +86,20 @@ export const hideEdit = () => {
         type: 'LIBRARIES_HIDE_EDIT'
     }
 }
+
+// export const search = (query) => {
+//     return async(dispatch) => {
+//         const response = await axios.get(url, {
+//             params: {
+//                 title: query
+//             }
+//         });
+//         dispatch({ 
+//             type: 'LIBRARIES_GET_DATA',
+//             payload: response.data
+//         })
+//     }
+// }
 
 export const showAdd = () => {
     return {
