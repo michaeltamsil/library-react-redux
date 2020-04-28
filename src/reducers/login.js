@@ -4,6 +4,10 @@ const initialState = {
 
 const login = (state = initialState, action) =>{
     switch (action.type) {
+        case 'LOGIN_LOGOUT':
+            return {
+                ...state, viaFacebook: {}
+            }
         case 'LOGIN_VIA_FACEBOOK':
             return {...state, viaFacebook:action.payload}
         default:

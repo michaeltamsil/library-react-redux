@@ -11,6 +11,12 @@ export const login = (data) => {
     })
 }
 
+export const logout = () =>{
+    return {
+        type: 'LOGIN_LOGOUT'
+    }
+}
+
 export const loginViaFacebook = (data) => {
     return {
         type: 'LOGIN_VIA_FACEBOOK',

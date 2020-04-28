@@ -1,7 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux"
 import { Link } from "react-router-dom";
 
-const Index = () => {
+import { logout } from './../../actioncreators/login';
+const Index = (props) => {
+  let linkUrlLogin;
+  const [data, setData] = useState();
+  const [viewLogin, setViewLogin] = useState();
+
+  const logout = () => {
+    props.logout();
+  }
+
+  useEffect(() => {
+    console.log('useEffect')
+    console.log(props.loginViaFacebook.id)
+    if (props.loginViaFacebook && props.loginViaFacebook.id ) {
+      console.log('halo')
+      linkUrlLogin = (
+      <>
+        <li className="nav-item">
+          <Link className="nav-link" to="/libraries">
+            Libraries
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/students">
+            Students
+          </Link>
+        </li>
+      </>
+      );
+      setViewLogin(<Link className="nav-link" onClick={logout}>Logout</Link>)
+      setData(linkUrlLogin)
+    } else {
+      setData();
+      setViewLogin(<Link className="nav-link" to="/login">Login</Link>)
+    }
+  }, [props.loginViaFacebook])
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/">
@@ -22,69 +58,22 @@ const Index = () => {
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <Link className="nav-link" to="/libraries">
-              Libraries
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/students">
-              Students
-            </Link>
-          </li>
-          <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Dropdown
-            </a>
-            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a className="dropdown-item" href="#">
-                Action
-              </a>
-              <a className="dropdown-item" href="#">
-                Another action
-              </a>
-              <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="#">
-                Something else here
-              </a>
-            </div>
-          </li>
-          <li className="nav-item">
-            <a
-              className="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-            >
-              Disabled
-            </a>
-          </li>
+          { data }
         </ul>
-        <form className="form-inline my-2 my-lg-0">
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
-        </form>
+          { viewLogin }
       </div>
     </nav>
   );
 };
 
-export default Index;
+const mapStateToProps = (state) => {
+  console.log(state.library)
+  console.log('tampilkan data library');
+  return {
+    loginViaFacebook : state.login.viaFacebook
+  }
+}
+
+const mapDispatchToProps = { logout }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

@@ -16,6 +16,7 @@ import reducers from "./reducers";
 const store = createStore(reducers, applyMiddleware(thunk));
 
 store.subscribe(() => {
+  console.log('data')
   console.log(store.getState());
 })
 
