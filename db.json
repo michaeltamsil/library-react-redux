@@ -35,6 +35,12 @@
       "kelas": "99",
       "name": "Michael Tamsil",
       "id": 1
+    },
+    {
+      "age": "19",
+      "kelas": "1",
+      "name": "joumanguard",
+      "id": 2
     }
   ]
 }
