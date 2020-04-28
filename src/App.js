@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import Libraries from "./components/Libraries";
+import Login from './components/Login';
 import Students from './components/Students';
 
 import Navbar from "./components/Navbar";
@@ -31,6 +32,9 @@ function App() {
               </Route>
               <Route path="/students">
                 <Students />
+              </Route>
+              <Route path="/login">
+                <Login/>
               </Route>
             </Switch>
           </div>

@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
 import libraries from './libraries';
+import login from './login';
 import students from './students';
 
 export default combineReducers({
-    libraries: libraries,
-    students: students
+    libraries,
+    login,
+    students
 });
