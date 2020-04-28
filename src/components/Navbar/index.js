@@ -3,20 +3,19 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom";
 
 import { logout } from './../../actioncreators/login';
+import { findByAltText } from "@testing-library/react";
 const Index = (props) => {
   let linkUrlLogin;
   const [data, setData] = useState();
   const [viewLogin, setViewLogin] = useState();
 
   const logout = () => {
+    window.FB && window.FB.logout();
     props.logout();
   }
 
   useEffect(() => {
-    console.log('useEffect')
-    console.log(props.loginViaFacebook.id)
     if (props.loginViaFacebook && props.loginViaFacebook.id ) {
-      console.log('halo')
       linkUrlLogin = (
       <>
         <li className="nav-item">

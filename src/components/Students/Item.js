@@ -11,7 +11,6 @@ const Item = (props) => {
     const handleClickUbah = () => {
         props.showEdit(props.data);
     }
-
     
     return (
         <tr>
