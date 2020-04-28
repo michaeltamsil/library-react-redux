@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3500/students';
+const url = `${process.env.REACT_APP_URL_SERVER}/students`;
 
 export const add = (data) => {
     

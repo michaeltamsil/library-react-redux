@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3500/libraries';
+const url = `${process.env.REACT_APP_URL_SERVER}/libraries`;
 
 export const add = (data) => {
     
