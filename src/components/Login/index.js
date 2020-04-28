@@ -8,13 +8,13 @@ const Index = (props) => {
     const [view, setView] = useState();
 
     useEffect(() => {
-        if (props.viaFacebook && props.viaFacebook.id){
+        if (props.viaLogin){
             setView(<Profile/>)
         }else {
             setView(<Login/>)
         }
 
-    }, [props.viaFacebook])
+    }, [props.viaLogin])
     return (
         <>
         {view}
@@ -24,7 +24,7 @@ const Index = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        viaFacebook: state.login.viaFacebook
+        viaLogin: state.login.viaLogin
     }
     
 }

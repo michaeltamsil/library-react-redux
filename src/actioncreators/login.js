@@ -1,14 +1,25 @@
 import axios from 'axios';
 
-const url = `${process.env.REACT_APP_URL_SERVER}/login`;
+//const url = `${process.env.REACT_APP_URL_SERVER}/login`;
+const url = 'http://f7e564ed.ngrok.io'
 
 export const login = (data) => {
-    axios.post(url, data)
-    .then(response => {
-    })
-    .catch(error => {
-        window.alert('ada kesalahan, coba lagi')
-    })
+    return async(dispatch) => {
+        try {
+            const response = await axios.post(`${url}/users/login`, data)
+            console.log(response.data)
+            dispatch({
+                type: 'LOGIN_SUCCESS',
+                payload: response.data
+            })
+        }
+        catch(error){
+            error && alert(`maaf, ada kesalahan di jaringan internet, ${error.message}`)
+        }
+
+    }
+
+    
 }
 
 export const logout = () =>{
@@ -17,9 +28,9 @@ export const logout = () =>{
     }
 }
 
-export const loginViaFacebook = (data) => {
-    return {
-        type: 'LOGIN_VIA_FACEBOOK',
-        payload: data
-    }
-}
+// export const loginviaLogin = (data) => {
+//     return {
+//         type: 'LOGIN_VIA_FACEBOOK',
+//         payload: data
+//     }
+// }

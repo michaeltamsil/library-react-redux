@@ -17,11 +17,11 @@ function App(props) {
           <div className="mt-4">
             <Switch>
               <Route path="/libraries">
-                { ( props.viaFacebook && props.viaFacebook.id ) ? <Libraries /> : <Redirect push to="/login"/>}
+                { ( props.viaLogin ) ? <Libraries /> : <Redirect push to="/login"/>}
               </Route>
               <Route path="/students">
                 
-                { ( props.viaFacebook && props.viaFacebook.id ) ? <Students /> : <Redirect push to="/login"/>}
+                { ( props.viaLogin ) ? <Students /> : <Redirect push to="/login"/>}
               </Route>
               <Route path="/login">
                 <Login/>
@@ -35,7 +35,7 @@ function App(props) {
 
 const mapStateToProps =(state) => {
   return {
-    viaFacebook: state.login.viaFacebook
+    viaLogin: state.login.viaLogin
   }
 }
 

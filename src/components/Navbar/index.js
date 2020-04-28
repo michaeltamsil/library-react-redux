@@ -10,12 +10,12 @@ const Index = (props) => {
   const [viewLogin, setViewLogin] = useState();
 
   const logout = () => {
-    window.FB && window.FB.logout();
+    // window.FB && window.FB.logout();
     props.logout();
   }
 
   useEffect(() => {
-    if (props.loginViaFacebook && props.loginViaFacebook.id ) {
+    if (props.viaLogin) {
       linkUrlLogin = (
       <>
         <li className="nav-item">
@@ -36,7 +36,7 @@ const Index = (props) => {
       setData();
       setViewLogin(<Link className="nav-link" to="/login">Login</Link>)
     }
-  }, [props.loginViaFacebook])
+  }, [props.viaLogin])
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/">
@@ -69,7 +69,7 @@ const mapStateToProps = (state) => {
   console.log(state.library)
   console.log('tampilkan data library');
   return {
-    loginViaFacebook : state.login.viaFacebook
+    viaLogin : state.login.viaLogin
   }
 }
 
