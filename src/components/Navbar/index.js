@@ -1,26 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 const Index = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <Navbar className="navbar navbar-expand-lg navbar-light bg-light" expand="lg">
       <Link className="navbar-brand" to="/">
         School
       </Link>
+      <Navbar.Toggle aria-controls="basic-navbar-nav"/>
 
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <Navbar.Collapse id="basic-navbar-nav">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
             <Link className="nav-link" to="/libraries">
@@ -82,8 +72,8 @@ const Index = () => {
             Search
           </button>
         </form>
-      </div>
-    </nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Libraries from "./components/Libraries";
 import Students from './components/Students';
+import Test from './components/Test';
 
 import Navbar from "./components/Navbar";
 
@@ -31,6 +32,9 @@ function App() {
               </Route>
               <Route path="/students">
                 <Students />
+              </Route>
+              <Route path="/">
+                <Test/>
               </Route>
             </Switch>
           </div>
