@@ -4,26 +4,29 @@ const url = `${process.env.REACT_APP_URL_SERVER}/libraries`;
 
 export const add = (data) => {
     
-    // return dispatch => {
-        // axios.post(url, data)
-        //     .then((response)=> {
-        //         dispatch({
-        //             type: 'LIBRARIES_ADD',
-        //             payload: response.data
-        //         })
-        //     })
-    // })
-    return async(dispatch) => {
-        const response = await axios.post(url, data);
-        dispatch({ 
-            type: 'LIBRARIES_ADD',
-            payload: response.data
-        })
-
-        dispatch({ 
-            type: 'LIBRARIES_HIDE_ADD'
-        })
+    return dispatch => {
+        axios.post(url, data)
+            .then((response)=> {
+                dispatch({
+                    type: 'LIBRARIES_ADD',
+                    payload: response.data
+                })
+            })
+            .catch((error) => {
+                window.alert(`maaf belum bisa menyimpan data karena ${error.message}`);
+            });
     }
+    // return async(dispatch) => {
+    //     const response = await axios.post(url, data);
+    //     dispatch({ 
+    //         type: 'LIBRARIES_ADD',
+    //         payload: response.data
+    //     })
+
+    //     dispatch({ 
+    //         type: 'LIBRARIES_HIDE_ADD'
+    //     })
+    // }
 }
 
 export const deleteData = (id) => {
@@ -61,11 +64,16 @@ export const getData = (query) => {
         pertanyaan = {params: {title: query }}
     }
     return async(dispatch) => {
-        const response = await axios.get(url, pertanyaan);
-        dispatch({ 
-            type: 'LIBRARIES_GET_DATA',
-            payload: response.data
-        })
+        try {
+            const response = await axios.get(url, pertanyaan);
+            dispatch({ 
+                type: 'LIBRARIES_GET_DATA',
+                payload: response.data
+            })
+        }
+        catch(error){
+            error && alert(`maaf, ada kesalahan di jaringan internet, ${error.message}`)
+        }
     }
 }
 
