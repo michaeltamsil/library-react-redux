@@ -1,5 +1,4 @@
 const initialState = {
-    viaLogin: '',
     viaLogin : localStorage.getItem('token')
 }
 

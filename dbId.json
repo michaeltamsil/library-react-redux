@@ -1,0 +1,25 @@
+{
+  "libraries": [
+    {
+      "number": "222",
+      "status": false,
+      "title": "how to be come great pro gammer with zero knowledge",
+      "year": "2000",
+      "id": 8
+    }
+  ],
+  "students": [
+    {
+      "age": "18",
+      "kelas": "99",
+      "name": "Michael Tamsil",
+      "id": 1
+    },
+    {
+      "age": "19",
+      "kelas": "1",
+      "name": "joumanguard",
+      "id": 2
+    }
+  ]
+}

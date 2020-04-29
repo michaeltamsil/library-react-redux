@@ -15,6 +15,7 @@ const Index = (props) => {
         }
 
     }, [props.viaLogin])
+    
     return (
         <>
         {view}

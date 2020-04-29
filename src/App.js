@@ -26,6 +26,9 @@ function App(props) {
               <Route path="/login">
                 <Login/>
               </Route>
+              <Route path="/">
+                tampilan dashboard
+              </Route>
             </Switch>
           </div>
         </div>

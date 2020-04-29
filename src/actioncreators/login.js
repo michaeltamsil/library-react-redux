@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //const url = `${process.env.REACT_APP_URL_SERVER}/login`;
-const url = 'http://f7e564ed.ngrok.io'
+const url = 'http://82ca5408.ngrok.io'
 
 export const login = (data) => {
     return async(dispatch) => {

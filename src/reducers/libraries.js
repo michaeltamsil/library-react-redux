@@ -14,6 +14,7 @@ const libraries = (state = initialState, action) => {
             return {...state, data: [...state.data, action.payload]};
 
         case 'LIBRARIES_DELETE_DATA':
+            debugger;
             data = state.data.filter((item) => {
                 if (item.id === action.payload)
                     return false;
@@ -23,7 +24,7 @@ const libraries = (state = initialState, action) => {
         
         case 'LIBRARIES_EDIT_DATA':
             data = state.data.map((item) => {
-                if (item.id === action.payload.id)
+                if (item[process.env.REACT_APP_ID_SYSTEM] === action.payload)
                     return action.payload;
                 return item;
             })            

@@ -6,7 +6,7 @@ import { deleteData, hideDelete } from './../../actioncreators/libraries'
 
 const Delete = (props) => {
     const handleDelete = () => {
-        props.deleteData(props.data.id);
+        props.deleteData(props.data[process.env.REACT_APP_ID_SYSTEM]);
       };
     
       const handleClose = () => {

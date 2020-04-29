@@ -7,6 +7,7 @@ export const add = (data) => {
     return dispatch => {
         axios.post(url, data)
             .then((response)=> {
+                
                 dispatch({
                     type: 'LIBRARIES_ADD',
                     payload: response.data
@@ -66,6 +67,7 @@ export const getData = (query) => {
     return async(dispatch) => {
         try {
             const response = await axios.get(url, pertanyaan);
+            
             dispatch({ 
                 type: 'LIBRARIES_GET_DATA',
                 payload: response.data
